@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard | Lux Bot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { margin: 0; font-family: 'Inter', sans-serif; background: #050505; color: #fff; display: flex; height: 100vh; }
+        .sidebar { width: 280px; background: #0a0a0c; border-right: 1px solid #1f1f23; display: flex; flex-direction: column; padding: 20px; }
+        .bot-header { display: flex; align-items: center; gap: 12px; background: #131317; padding: 15px; border-radius: 12px; margin-bottom: 25px; }
+        .bot-img { width: 40px; height: 40px; border-radius: 8px; }
+        
+        .server-select { 
+            width: 100%; background: #131317; color: white; padding: 12px; 
+            border-radius: 12px; border: 1px solid #222; font-size: 14px; cursor: pointer;
+            margin-bottom: 25px; appearance: none; /* remove seta padrão para ficar mais clean */
+        }
+
+        .category { font-size: 11px; color: #555; text-transform: uppercase; margin: 20px 0 10px 5px; letter-spacing: 1px; }
+        .menu-item { padding: 12px; border-radius: 8px; color: #aaa; cursor: pointer; transition: 0.2s; font-size: 14px; }
+        .menu-item:hover { background: #131317; color: #fff; }
+        .menu-item.active { background: #131317; color: #5865f2; border-left: 3px solid #5865f2; }
+        .user-footer { margin-top: auto; background: #131317; padding: 15px; border-radius: 12px; display: flex; align-items: center; gap: 10px; }
+        .user-avatar { width: 40px; height: 40px; border-radius: 50%; }
+    </style>
+</head>
+<body>
+<div class="sidebar">
+    <div class="bot-header">
+        <img src="/17790659067672.png" class="bot-img">
+        <div>
+            <div style="font-weight: 800;">Lux Bot</div>
+            <div style="font-size: 12px; color: #5865f2;">v1.0</div>
+        </div>
+    </div>
+
+    <select class="server-select" onchange="window.location.href='/dashboard?guild=' + this.value">
+        <% if (locals.guilds && guilds.length > 0) { %>
+            <% guilds.forEach(function(guild) { 
+                // Monta a URL da imagem do servidor
+                let iconUrl = guild.icon ? `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png` : 'https://cdn.discordapp.com/embed/avatars/0.png';
+            %>
+                <option value="<%= guild.id %>">
+                    <%= guild.name %>
+                </option>
+            <% }); %>
+        <% } else { %>
+            <option>Nenhum servidor</option>
+        <% } %>
+    </select>
+
+    <div class="category">Geral</div>
+    <div class="menu-item active">Visão Geral</div>
+    <div class="menu-item">Configurações</div>
+    <div class="category">Comunidade</div>
+    <div class="menu-item">Filas e Apostas</div>
+    <div class="menu-item">Mediadores</div>
+
+    <div class="user-footer">
+        <img src="<%= userAvatar %>" class="user-avatar">
+        <div>
+            <div style="font-size: 14px; font-weight: 600;"><%= userName %></div>
+            <div style="font-size: 12px; color: #888;"><%= userPlan %></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

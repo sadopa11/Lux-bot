@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard | Lux Bot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --sidebar-bg: #0a0a0c; --card-bg: #131317; --accent: #5865f2; }
+        body { margin: 0; font-family: 'Inter', sans-serif; background: #050505; color: #fff; display: flex; }
+
+        /* Sidebar */
+        .sidebar { width: 280px; background: var(--sidebar-bg); height: 100vh; padding: 20px; display: flex; flex-direction: column; border-right: 1px solid #1f1f23; }
+
+        /* Cabeçalho do Bot */
+        .bot-header { display: flex; align-items: center; gap: 12px; margin-bottom: 25px; background: var(--card-bg); padding: 12px; border-radius: 12px; }
+        .bot-img { width: 40px; height: 40px; border-radius: 8px; }
+        .bot-info { font-size: 14px; }
+        .bot-name { font-weight: 700; display: block; }
+        .bot-ver { font-size: 12px; color: var(--accent); font-weight: 600; }
+
+        /* Seletor de Servidor */
+        .server-selector { background: var(--card-bg); padding: 15px; border-radius: 10px; margin-bottom: 25px; font-size: 14px; }
+
+        /* Menu */
+        .menu-group { margin-bottom: 25px; }
+        .menu-title { font-size: 11px; color: #555; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 1px; }
+        .menu-item { padding: 12px; border-radius: 8px; cursor: pointer; transition: 0.2s; font-size: 14px; color: #aaa; }
+        .menu-item:hover { background: #1a1a20; color: #fff; }
+        .menu-item.active { background: #1a1a20; color: var(--accent); border-left: 3px solid var(--accent); }
+
+        /* Usuário e Logout */
+        .user-footer { margin-top: auto; display: flex; align-items: center; gap: 10px; background: var(--card-bg); padding: 12px; border-radius: 10px; }
+        .user-avatar { width: 35px; height: 35px; border-radius: 50%; background: #333; }
+        .logout-btn { margin-left: auto; cursor: pointer; color: #666; }
+    </style>
+</head>
+<body>
+
+<div class="sidebar">
+    <div class="bot-header">
+        <img src="17790659067672.png" alt="Bot" class="bot-img">
+        <div class="bot-info">
+            <span class="bot-name">Lux Bot</span>
+            <span class="bot-ver">v1.0</span>
+        </div>
+    </div>
+
+    <div class="server-selector">
+        LEGACY E-SPORTS (18) ▼
+    </div>
+
+    <div class="menu-group">
+        <div class="menu-title">Geral</div>
+        <div class="menu-item active">Visão Geral</div>
+        <div class="menu-item">Configurações</div>
+    </div>
+
+    <div class="user-footer">
+        <div class="user-avatar"></div> <div>
+            <div style="font-size: 13px;">Seu Nome</div>
+            <div style="font-size: 11px; color: #666;">Sem Plano</div>
+        </div>
+        <div class="logout-btn">⎋</div> </div>
+</div>
+
+</body>
+</html>

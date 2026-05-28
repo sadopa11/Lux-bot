@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Lux Bot | Sistema de Gerenciamento</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { margin: 0; font-family: 'Inter', sans-serif; background-color: #050507; color: #ffffff; }
+        
+        /* Cabeçalho */
+        header { padding: 20px 60px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1f1f23; }
+        .logo-area { display: flex; align-items: center; gap: 12px; }
+        .logo-img { width: 40px; height: 40px; border-radius: 10px; object-fit: cover; }
+        .brand-name { font-weight: 800; font-size: 20px; letter-spacing: -0.5px; }
+        
+        .nav-right { display: flex; align-items: center; gap: 25px; }
+        .nav-link { color: #94a3b8; text-decoration: none; font-size: 15px; font-weight: 500; }
+        
+        /* Botão ENTRAR com o link do Discord */
+        .login-btn { 
+            border: 1px solid #334155; padding: 10px 24px; color: white; 
+            text-decoration: none; border-radius: 8px; font-size: 14px; font-weight: 600;
+            transition: 0.3s;
+        }
+        .login-btn:hover { background: #1a1a1e; }
+
+        /* Hero Section */
+        .hero { padding: 100px 20px; text-align: center; }
+        h1 { font-size: 56px; line-height: 1.1; margin-bottom: 25px; font-weight: 800; letter-spacing: -1px; }
+        h1 span { color: #5865f2; }
+        p { color: #94a3b8; font-size: 18px; max-width: 600px; margin: 0 auto 40px; line-height: 1.6; }
+        
+        /* Botão COMEÇAR GRÁTIS com o link do Discord */
+        .btn-primary { 
+            background: #5865f2; color: white; padding: 18px 40px; border-radius: 10px; 
+            text-decoration: none; font-weight: 700; font-size: 16px; transition: 0.3s;
+        }
+        .btn-primary:hover { background: #4752c4; }
+        
+        .btn-secondary { 
+            border: 1px solid #334155; padding: 18px 40px; color: white; 
+            text-decoration: none; border-radius: 10px; margin-left: 15px; font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-area">
+            <img src="17790659067672.png" alt="Logo" class="logo-img">
+            <span class="brand-name">Lux Bot</span>
+        </div>
+        <div class="nav-right">
+            <a href="#" class="nav-link">Recursos</a>
+            <a href="#" class="nav-link">Dashboard</a>
+            <a href="https://discord.com/oauth2/authorize?client_id=1504203077308252294&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fcallback&scope=guilds+identify" class="login-btn">ENTRAR</a>
+        </div>
+    </header>
+
+    <div class="hero">
+        <h1>Crie filas, apostas e tickets <br> no seu <span>Discord em minutos</span></h1>
+        <p>Configure uma vez e o Lux Bot faz o resto — filas automáticas, mediação, ranking, economia e dashboard web completo.</p>
+        
+        <a href="https://discord.com/oauth2/authorize?client_id=1504203077308252294&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fcallback&scope=guilds+identify" class="btn-primary">
+            Começar grátis
+        </a>
+        <a href="#" class="btn-secondary">Funções</a>
+    </div>
+
+</body>
+</html>
