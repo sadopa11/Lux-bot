@@ -6,8 +6,13 @@ const app = express();
 
 // Configurações
 const CLIENT_ID = '1504203077308252294';
-const CLIENT_SECRET = 'iN54Sl9YylyRzk4hXJvK7HWBSImE6-BI';
-const REDIRECT_URI = 'http://localhost:3000/callback';
+// IMPORTANTE: No Render, vá em Environment e adicione uma variável chamada CLIENT_SECRET
+// com o valor abaixo para não deixar exposto aqui.
+const CLIENT_SECRET = process.env.CLIENT_SECRET || 'iN54Sl9YylyRzk4hXJvK7HWBSImE6-BI';
+const REDIRECT_URI = 'https://lux-bot-c6fm.onrender.com/callback';
+
+// Porta dinâmica para o Render
+const PORT = process.env.PORT || 10000;
 
 // Configurações do EJS e Static
 app.set('view engine', 'ejs');
@@ -51,7 +56,6 @@ app.get('/callback', async (req, res) => {
     if (!code) return res.redirect('/');
 
     try {
-        // 1. Troca o código pelo token
         const tokenRes = await axios.post('https://discord.com/api/oauth2/token', new URLSearchParams({
             client_id: CLIENT_ID,
             client_secret: CLIENT_SECRET,
@@ -61,17 +65,12 @@ app.get('/callback', async (req, res) => {
         }));
 
         const token = tokenRes.data.access_token;
-
-        // 2. Busca dados do usuário e servidores
         const userRes = await axios.get('https://discord.com/api/users/@me', { headers: { Authorization: `Bearer ${token}` }});
         const guildsRes = await axios.get('https://discord.com/api/users/@me/guilds', { headers: { Authorization: `Bearer ${token}` }});
 
-        // 3. Filtro de Servidores (onde o seu bot está)
-        // Apenas servidores que estão nesta lista abaixo serão exibidos no painel
         const idsOndeMeuBotEsta = ['1503566673637019650']; 
         const guildsFiltradas = guildsRes.data.filter(g => idsOndeMeuBotEsta.includes(g.id));
 
-        // 4. Salva na sessão
         req.session.user = {
             username: userRes.data.username,
             avatar: `https://cdn.discordapp.com/avatars/${userRes.data.id}/${userRes.data.avatar}.png`
@@ -85,4 +84,5 @@ app.get('/callback', async (req, res) => {
     }
 });
 
-app.listen(3000, () => console.log('Painel Lux Bot rodando em http://localhost:3000'));
+// Inicialização do Servidor
+app.listen(PORT, '0.0.0.0', () => console.log('Painel Lux Bot rodando na porta ' + PORT));
